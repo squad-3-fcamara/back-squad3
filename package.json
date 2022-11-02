@@ -1,0 +1,16 @@
+{
+  "name": "orange-evolution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "node --watch ./src/index.js"
+  },
+  "keywords": [],
+  "author": "squad-03",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
