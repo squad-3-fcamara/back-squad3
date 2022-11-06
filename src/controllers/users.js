@@ -1,24 +1,13 @@
-const getUsers = (req, res) => {
-  const users = [
-    {
-      id: "1",
-      name: "João",
-    },
-    {
-      id: "2",
-      name: "Maria",
-    },
-    {
-      id: "3",
-      name: "Carlos",
-    },
-    {
-      id: "4",
-      name: "Renata",
-    },
-  ];
+const knex = require("../connection");
 
-  res.status(200).json(users);
+const getUsers = async (req, res) => {
+  try {
+    const users = await knex("usuarios").select("*");
+
+    res.status(200).json(users);
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
 };
 
 module.exports = {
