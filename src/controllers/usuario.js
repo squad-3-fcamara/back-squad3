@@ -26,9 +26,7 @@ const cadastrarUsuario = async (req, res) => {
 
     const dadosUsuario = { nome, email, senha: senhaCriptografada };
 
-    const registrarUsuario = await knex("usuarios")
-      .insert(dadosUsuario)
-      .returning("*");
+    const registrarUsuario = await knex("usuarios").insert(dadosUsuario).returning("*");
 
     if (!registrarUsuario) {
       return res.status(400).json("Não foi possível cadastrar usuário.");
