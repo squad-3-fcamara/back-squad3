@@ -1,7 +1,7 @@
 const express = require("express");
-const { getUsers } = require("./controllers/users");
+const { cadastrarUsuario } = require("./controllers/usuario");
 const routes = express();
 
-routes.get("/users", getUsers);
+routes.post("/usuario/cadastro", cadastrarUsuario);
 
 module.exports = routes;
