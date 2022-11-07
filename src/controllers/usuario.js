@@ -1,7 +1,10 @@
 const bcrypt = require("bcrypt");
 const knex = require("../conexao");
+const jwt = require("jsonwebtoken");
+const segredo = require("../segredo/jwtSegredo");
 const cadastrarTrilha = require("../utils/cadastrarTrilha");
 const schemaCadastroUsuario = require("../validations/schemaCadastroUsuario");
+const schemaLogarUsuario = require("../validations/schemaLogarUsuario");
 const verificarTrilha = require("../validations/verificarTrilha");
 
 const cadastrarUsuario = async (req, res) => {
@@ -41,6 +44,38 @@ const cadastrarUsuario = async (req, res) => {
   }
 };
 
+const logarUsuario = async (req, res) => {
+  const { email, senha } = req.body;
+
+  try {
+    await schemaLogarUsuario.validate(req.body);
+
+    const usuario = await knex("usuarios").where({ email }).first();
+    if (!usuario) {
+      return res.status(404).json("O usuário não foi encontrado");
+    }
+
+    const verificarSenha = await bcrypt.compare(senha, usuario.senha);
+    if (!verificarSenha) {
+      return res.status(400).json("Email e/ou senha não conferem");
+    }
+
+    const token = jwt.sign({ id: usuario.id }, segredo, {
+      expiresIn: "8h",
+    });
+
+    const { senha: senhaUsuario, ...dadosUsuario } = usuario;
+
+    return res.status(200).json({
+      usuario: dadosUsuario,
+      token,
+    });
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+};
+
 module.exports = {
   cadastrarUsuario,
+  logarUsuario,
 };
