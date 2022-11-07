@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS trilhas(
   	nome TEXT NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS incricoes(
+CREATE TABLE IF NOT EXISTS inscricoes(
 	id SERIAL PRIMARY KEY,
   	id_trilha INTEGER NOT NULL,
   	id_usuario INTEGER NOT NULL,
@@ -31,3 +31,7 @@ CREATE TABLE IF NOT EXISTS conteudos(
   	link TEXT NOT NULL,
   	FOREIGN KEY (id_trilha) REFERENCES trilhas (id)
 );
+
+INSERT INTO trilhas (nome) VALUES ('Desenvolvimento Full Stack');
+INSERT INTO trilhas (nome) VALUES ('UX/UI Designer');
+INSERT INTO trilhas (nome) VALUES ('Quality Assurance');

@@ -1,7 +1,12 @@
 const express = require("express");
-const { getUsers } = require("./controllers/users");
+const { cadastrarUsuario, logarUsuario } = require("./controllers/usuario");
+const verificarUsuarioLogado = require("./middlewares/verificarUsuarioLogado");
+
 const routes = express();
 
-routes.get("/users", getUsers);
+routes.post("/usuario/cadastro", cadastrarUsuario);
+routes.post("/usuario/login", logarUsuario);
+
+routes.use(verificarUsuarioLogado);
 
 module.exports = routes;
