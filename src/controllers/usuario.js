@@ -12,9 +12,9 @@ const cadastrarUsuario = async (req, res) => {
 
   try {
     await schemaCadastroUsuario.validate(req.body);
-    const erro = verificarTrilha(trilha);
-    if (erro) {
-      res.status(400).json(erro);
+    const erroTrilha = verificarTrilha(trilha);
+    if (erroTrilha) {
+      res.status(400).json(erroTrilha);
     }
 
     const verificarEmail = await knex("usuarios").where({ email }).first();
