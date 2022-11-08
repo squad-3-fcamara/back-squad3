@@ -40,4 +40,4 @@ CREATE TABLE IF NOT EXISTS conteudos(
 
 INSERT INTO trilhas (nome) VALUES ('Desenvolvimento Full Stack');
 INSERT INTO trilhas (nome) VALUES ('UX/UI Designer');
-INSERT INTO trilhas (nome) VALUES ('Quality Assurance');
+INSERT INTO trilhas (nome) VALUES ('Quality Assurance (QA)');

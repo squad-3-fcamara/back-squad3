@@ -10,7 +10,7 @@
     <li>email: string (obrigatório)</li>
     <li>senha: string e deve ter no mínimo 8 dígitos (obrigatório)</li>
     <li>trilhas: array de string das trilhas (obrigatório)</li>
-    <li>Opções das trilhas: Fullstack (fullstack), UX/UI (ux), Quality Assurance (qa)</li>
+    <li>Opções das trilhas: Full stack (full stack), UX/UI (ux), Quality Assurance (qa)</li>
 </ul>
 
 <p>Login - <b>/usuario/login</b></p>

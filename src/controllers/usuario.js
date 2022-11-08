@@ -8,11 +8,11 @@ const schemaLogarUsuario = require("../validations/schemaLogarUsuario");
 const verificarTrilha = require("../validations/verificarTrilha");
 
 const cadastrarUsuario = async (req, res) => {
-  const { nome, email, senha, trilha } = req.body;
+  const { nome, email, senha, trilhas } = req.body;
 
   try {
     await schemaCadastroUsuario.validate(req.body);
-    const erroTrilha = verificarTrilha(trilha);
+    const erroTrilha = verificarTrilha(trilhas);
     if (erroTrilha) {
       res.status(400).json(erroTrilha);
     }
@@ -32,8 +32,8 @@ const cadastrarUsuario = async (req, res) => {
       return res.status(400).json("Não foi possível cadastrar usuário.");
     }
 
-    for (let t of trilha) {
-      cadastrarTrilha(t, registrarUsuario[0]);
+    for (let trilha of trilhas) {
+      cadastrarTrilha(trilha, registrarUsuario[0]);
     }
 
     return res.status(201).json("O usuário foi cadastrado com sucesso!");
