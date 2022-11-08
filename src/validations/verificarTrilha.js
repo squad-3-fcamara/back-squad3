@@ -6,7 +6,7 @@ function verificarTrilha(trilha) {
     return "Você está informando mais trilhas que o permitido.";
   }
   for (let t of trilha) {
-    if (t !== "fullstack" && t !== "ux" && t !== "qa") {
+    if (t !== "full stack" && t !== "ux" && t !== "qa") {
       return "Você está informando trilha que não existe.";
     }
   }
