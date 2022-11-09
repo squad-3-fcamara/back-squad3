@@ -2,7 +2,7 @@
 
 <h3>Endpoints:</h3>
 
-<p>Listar Trilhas - <b>/trilhas - GET</b></p>
+<p>Listar Todas as Trilhas - <b>/trilhas - GET</b></p>
 <ul>
     <li>Usada para listas todas as trilhas com seu nome e id</li>
 </ul>
@@ -24,4 +24,17 @@
     <li>email: string (obrigatório)</li>
     <li>senha: string e deve ter no mínimo 8 dígitos (obrigatório)</li>
     <li>Será retornado o token de autenticação e os dados do usuário logado</li>
+</ul>
+
+<h3>Endpoints que usuário precisa estar logado:</h3>
+
+<p>Detalhar Usuário e suas Trilhas - <b>/usuario - GET</b></p>
+<ul>
+    <li>Usada para detalhar o usuário e todas as trilhas</li>
+</ul>
+
+<p>Alterar as Trilhas do Usuário - <b>/usuario/trilhas/alterar - POST</b></p>
+<ul>
+    <li>Usada para alterar as trilhas do usuário</li>
+    <li>Deve ser enviado no body: array de id das trilhas (obrigatório)</li>
 </ul>
