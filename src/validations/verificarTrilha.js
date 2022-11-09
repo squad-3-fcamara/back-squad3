@@ -1,14 +1,13 @@
-function verificarTrilha(trilhas) {
+const knex = require("../conexao");
+
+async function verificarTrilha(trilhas) {
   if (!trilhas) {
     return "Você deve informar a trilha.";
   }
-  if (trilhas.length > 3) {
+
+  const trilhasBanco = await knex("trilhas").select("*");
+  if (trilhas.length > trilhasBanco.length) {
     return "Você está informando mais trilhas que o permitido.";
-  }
-  for (let trilha of trilhas) {
-    if (trilha !== "full stack" && trilha !== "ux" && trilha !== "qa") {
-      return "Você está informando trilha que não existe.";
-    }
   }
 }
 
