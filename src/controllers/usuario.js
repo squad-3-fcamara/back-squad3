@@ -2,19 +2,19 @@ const bcrypt = require("bcrypt");
 const knex = require("../conexao");
 const jwt = require("jsonwebtoken");
 const segredo = require("../segredo/jwtSegredo");
-const cadastrarTrilha = require("../utils/cadastrarTrilha");
 const schemaCadastroUsuario = require("../validations/schemaCadastroUsuario");
 const schemaLogarUsuario = require("../validations/schemaLogarUsuario");
 const verificarTrilha = require("../validations/verificarTrilha");
+const cadastrarTrilha = require("../utils/cadastrarTrilha");
 
 const cadastrarUsuario = async (req, res) => {
-  const { nome, email, senha, trilha } = req.body;
+  const { nome, email, senha, trilhas } = req.body;
 
   try {
     await schemaCadastroUsuario.validate(req.body);
-    const erroTrilha = verificarTrilha(trilha);
+    const erroTrilha = await verificarTrilha(trilhas);
     if (erroTrilha) {
-      res.status(400).json(erroTrilha);
+      return res.status(400).json(erroTrilha);
     }
 
     const verificarEmail = await knex("usuarios").where({ email }).first();
@@ -32,8 +32,8 @@ const cadastrarUsuario = async (req, res) => {
       return res.status(400).json("Não foi possível cadastrar usuário.");
     }
 
-    for (let t of trilha) {
-      cadastrarTrilha(t, registrarUsuario[0]);
+    for (let trilhaId of trilhas) {
+      cadastrarTrilha(trilhaId, registrarUsuario[0].id);
     }
 
     return res.status(201).json("O usuário foi cadastrado com sucesso!");
@@ -73,7 +73,24 @@ const logarUsuario = async (req, res) => {
   }
 };
 
+const detalhesUsuario = async (req, res) => {
+  const usuario = req.usuario;
+  const trilhas = [];
+
+  const trilhasId = await knex("inscricoes").select("id_trilha").where("id_usuario", usuario.id);
+
+  for (let trilhaId of trilhasId) {
+    const trilha = await knex("trilhas").select("*").where("id", trilhaId.id_trilha).first();
+    trilhas.push(trilha);
+  }
+  res.status(200).json({
+    usuario,
+    trilhas,
+  });
+};
+
 module.exports = {
   cadastrarUsuario,
   logarUsuario,
+  detalhesUsuario,
 };
