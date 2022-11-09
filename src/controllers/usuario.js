@@ -73,7 +73,24 @@ const logarUsuario = async (req, res) => {
   }
 };
 
+const detalhesUsuario = async (req, res) => {
+  const usuario = req.usuario;
+  const trilhas = [];
+
+  const trilhasId = await knex("inscricoes").select("id_trilha").where("id_usuario", usuario.id);
+
+  for (let trilhaId of trilhasId) {
+    const trilha = await knex("trilhas").select("*").where("id", trilhaId.id_trilha).first();
+    trilhas.push(trilha);
+  }
+  res.status(200).json({
+    usuario,
+    trilhas,
+  });
+};
+
 module.exports = {
   cadastrarUsuario,
   logarUsuario,
+  detalhesUsuario,
 };
