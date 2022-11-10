@@ -1,0 +1,440 @@
+{
+    "openapi": "3.0.0",
+    "info":{
+        "title": "API Orange Juice - Squad 03",
+        "description": "Essa API para a Orange Juice",
+        "version":"1.0.0"
+    },
+    "servers":[
+        {
+            "url": "http://localhost:3100",
+            "description": "API para rodar localmente."
+        },
+        {
+            "url": "https://orange-squad03.herokuapp.com",
+            "description": "API hospedada."
+        }
+    ],
+    "paths":{
+        "/usuario/cadastro":{
+            "post":{
+                "summary": "Cadastro de usuário",
+                "description": "Essa rota será responsável pelo cadastro do usuário no sistema.",
+                "tags":["Usuário"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/CadastroUsuario"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                   "400":{
+                        "description": "Bad Request"
+                   },
+                   "201":{
+                        "description": "Created"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        },
+        "/usuario/login":{
+            "post":{
+                "summary":"Login de usuário",
+                "description": "Essa rota será responsável pelo login do usuário no sistema.",
+                "tags":["Usuário"],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/LoginUsuario"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "404":{
+                        "description": "Not Found"
+                   },
+                   "400":{
+                        "description": "Bad Request"
+                   },
+                   "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        },
+        "/trilhas":{
+            "get":{
+                "summary": "Listagem de trilhas",
+                "description": "Essa rota é para listagem das trilhas com seu respectivo id.",
+                "tags":["Trilha"],
+                "responses":{
+                    "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        },
+        "/usuario":{
+            "get":{
+                "summary": "Detalhes do usuário",
+                "description": "Essa rota é para retornar os dados do usuário logado.",
+                "tags":["Usuário"],
+                "security":[{"bearerAuth":[]}],
+                "responses":{
+                    "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        },
+        "/usuario/trilhas/alterar":{
+            "patch":{
+                "summary":"Alterar trilhas do usuário",
+                "description":"Essa rota será responsável por alterar as trilhas que o usuário logado quiser.",
+                "tags":["Usuário"],
+                "security":[{"bearerAuth":[]}],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/AlterarTrilha"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/trilhas/{idTrilha}":{
+            "get":{
+                "summary": "Detalhar trilha",
+                "description": "Essa rota é para trazer informações (nome e os módulos) da trilha que foi colocado o id no parâmetro da requisição",
+                "tags":["Trilha"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"idTrilha",
+                        "description":"Id da trilha que retornará os dados",
+                        "required":true 
+                    }
+                ],
+                "responses":{
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }  
+            }
+        },
+        "/trilhas/{idTrilha}/modulos/{idModulo}":{
+            "get":{
+                "summary": "Detalhar módulo da trilha",
+                "description": "Essa rota é para trazer informações do módulo da trilha que foi colocado os ids no parâmetro da requisição",
+                "tags":["Trilha"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"idTrilha",
+                        "description":"Id da trilha que contém o módulo",
+                        "required":true 
+                    },
+                    {
+                        "in":"path",
+                        "name":"idModulo",
+                        "description":"Id do módulo",
+                        "required":true 
+                    }
+                ],
+                "responses":{
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }  
+            }
+        },
+        "/trilhas/{idTrilha}/aulas/{idAula}":{
+            "get":{
+                "summary":"Detalhar aulas do módulo",
+                "description": "Essa rota é para trazer informações da aula do módulo que foi colocado os ids no parâmetro da requisição",
+                "tags":["Trilha"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"idTrilha",
+                        "description":"Id da trilha que contém a aula",
+                        "required":true 
+                    },
+                    {
+                        "in":"path",
+                        "name":"idAula",
+                        "description":"Id da aula",
+                        "required":true 
+                    }
+                ],
+                "responses":{
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }  
+            }
+        },
+        "/conteudos/adicionar":{
+            "post":{
+                "summary": "Cadastro do conteúdo na trilha",
+                "description": "Essa rota será responsável pelo cadastro de conteúdos na trilha.",
+                "tags":["Conteúdos"],
+                "security":[{"bearerAuth":[]}],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/CadastroConteudo"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                   "400":{
+                        "description": "Bad Request"
+                   },
+                   "201":{
+                        "description": "Created"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        },
+        "/conteudos/deletar/{idConteudo}":{
+            "delete":{
+                "summary": "Deletar um conteúdo da trilha",
+                "description":"Essa rota será responsável por deletar o conteúdo com o id passado como paramêtro.",
+                "tags":["Conteúdos"],
+                "security":[{"bearerAuth":[]}],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"idConteudo",
+                        "description":"Id do conteúdo",
+                        "required":true 
+                    }
+                ],
+                "responses":{
+                    "404":{
+                        "description": "Not Found"
+                    },
+                    "400":{
+                        "description":"Bad Request"
+                    },
+                    "200":{
+                        "description": "OK"
+                    },
+                   "500":{
+                        "description": "Internal Server Error"
+                    }
+                }  
+            }
+        },
+        "/conteudo/{idConteudo}":{
+        "get":{
+            "summary": "Detalhes do conteúdo",
+            "description": "Essa rota é para retornar os dados do conteúdo.",
+            "tags":["Conteúdos"],
+            "security":[{"bearerAuth":[]}],
+            "parameters":[
+                {
+                    "in":"path",
+                    "name":"idConteudo",
+                    "description":"Id do conteúdo",
+                    "required":true 
+                }
+            ],
+            "responses":{
+                "200":{
+                    "description": "OK"
+                },
+                "500":{
+                    "description": "Internal Server Error"
+                },
+                "400":{
+                    "description":"Bad Request"
+                }
+                }
+            }
+        },
+        "/conteudo/editar/{idConteudo}":{
+            "patch":{
+                "summary": "Edição do conteúdo na trilha",
+                "description": "Essa rota será responsável pela edição de conteúdos na trilha.",
+                "tags":["Conteúdos"],
+                "security":[{"bearerAuth":[]}],
+                "requestBody":{
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/components/schemas/CadastroConteudo"
+                            }
+                        }
+                    }
+                },
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"idConteudo",
+                        "description":"Id do conteúdo",
+                        "required":true 
+                    }
+                ],
+                "responses":{
+                   "400":{
+                        "description": "Bad Request"
+                   },
+                   "200":{
+                        "description": "OK"
+                   },
+                   "500":{
+                        "description": "Internal Server Error"
+                   }
+                }
+            }
+        }
+    },
+    "components":{
+        "schemas":{
+            "CadastroUsuario":{
+                "type":"object",
+                "properties":{
+                    "nome":{
+                        "type":"string",
+                        "example": "Pedro",
+                        "description": "Nome do usuário."
+                    },
+                    "email":{
+                        "type":"string",
+                        "example": "pedrocosta@email.com",
+                        "description": "E-mail do usuário."
+                    },
+                    "senha":{
+                        "type":"string",
+                        "example": "12345678",
+                        "description": "Senha do usuário que deve ter no mínimo 8 dígitos."
+                    },
+                    "trilhas":{
+                        "type": "number[]",
+                        "example":[1,2,3],
+                        "description": "Array com o(s) id(s) da(s) trilha(s) que o usuário escolheu."
+                    }
+                }
+            },
+            "LoginUsuario":{
+                "type":"object",
+                "properties":{
+                    "email":{
+                        "type":"string",
+                        "example": "pedrocosta@email.com",
+                        "description": "E-mail do usuário."
+                    },
+                    "senha":{
+                        "type":"string",
+                        "example": "12345678",
+                        "description": "Senha do usuário que deve ter no mínimo 8 dígitos."
+                    }
+                }
+            },
+            "AlterarTrilha":{
+                "type":"object",
+                "properties":{
+                    "trilhas":{
+                        "type": "number[]",
+                        "example":[1,2,3],
+                        "description": "Array com o(s) id(s) da(s) trilha(s) que o usuário escolheu."
+                    }
+                }
+            },
+            "CadastroConteudo":{
+                "type":"object",
+                "properties":{
+                    "id_aula":{
+                        "type":"number",
+                        "example": "1",
+                        "description": "Id da aula que esse conteúdo será inserido."
+                    },
+                    "ordem":{
+                        "type":"string",
+                        "example": "1",
+                        "description": "Numeração da ordenação da lista conteúdo que aparecerá para o usuário."
+                    },
+                    "nome":{
+                        "type":"string",
+                        "example": "Qual a diferença entre UX e UI",
+                        "description": "Nome do conteúdo."
+                    },
+                    "tipo":{
+                        "type": "string",
+                        "example":"artigo",
+                        "description": "O tipo de conteúdo."
+                    },
+                    "autor":{
+                        "type":"string",
+                        "example":"Orange Juice",
+                        "description":"O nome do autor do conteúdo."
+                    },
+                    "descricao":{
+                        "type":"string",
+                        "example":"Todos que estão entrando na área sempre perguntam qual a diferença entre UX e UI...",
+                        "description":"A descrição do conteúdo."
+                    },
+                    "link":{
+                        "type":"string",
+                        "example":"https://medium.com/",
+                        "description":"O link do conteúdo."
+                    }
+                }
+            }
+        },
+        "securitySchemes":{
+            "bearerAuth":{
+                "type":"http",
+                "scheme": "bearer",
+                "bearerFormat":"JWT"
+            }
+        }
+    }
+}

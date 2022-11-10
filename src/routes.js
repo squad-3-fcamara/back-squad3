@@ -27,7 +27,7 @@ routes.get("/trilhas", listarTrilhas);
 
 routes.use(verificarUsuarioLogado);
 routes.get("/usuario", detalhesUsuario);
-routes.post("/usuario/trilhas/alterar", alterarTrilhas);
+routes.patch("/usuario/trilhas/alterar", alterarTrilhas);
 routes.get("/trilhas/:idTrilha", verificarUsuarioInscrito, detalharTrilha);
 routes.get("/trilhas/:idTrilha/modulos/:idModulo", verificarUsuarioInscrito, detalharModulos);
 routes.get("/trilhas/:idTrilha/aulas/:idAula", verificarUsuarioInscrito, detalharAulas);
