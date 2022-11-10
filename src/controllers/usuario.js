@@ -77,16 +77,20 @@ const detalhesUsuario = async (req, res) => {
   const usuario = req.usuario;
   const trilhas = [];
 
-  const trilhasId = await knex("inscricoes").select("id_trilha").where("id_usuario", usuario.id);
+  try {
+    const trilhasId = await knex("inscricoes").select("id_trilha").where("id_usuario", usuario.id);
 
-  for (let trilhaId of trilhasId) {
-    const trilha = await knex("trilhas").select("*").where("id", trilhaId.id_trilha).first();
-    trilhas.push(trilha);
+    for (let trilhaId of trilhasId) {
+      const trilha = await knex("trilhas").select("*").where("id", trilhaId.id_trilha).first();
+      trilhas.push(trilha);
+    }
+    res.status(200).json({
+      usuario,
+      trilhas,
+    });
+  } catch (error) {
+    return res.status(500).json(error.message);
   }
-  res.status(200).json({
-    usuario,
-    trilhas,
-  });
 };
 
 module.exports = {
