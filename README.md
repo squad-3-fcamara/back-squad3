@@ -1,40 +1,38 @@
 <h1>Back-end do Squad-03</h1>
 
-<h3>Endpoints:</h3>
+<h2>Sobre</h2>
+Esta é a API do Squad 03 do Hackaton do Programa de Formação da <a href="https://digital.fcamara.com.br/programadeformacao">FCamara</a>.<br/>
+Utilizamos Node.js com Express para a criação do back-end, juntamente utilizando Postgres como banco de dados.
 
-<p>Listar Todas as Trilhas - <b>/trilhas - GET</b></p>
+<h2>Tecnologias</h2>
 <ul>
-    <li>Usada para listas todas as trilhas com seu nome e id</li>
+    <li>NodeJS</li>
+    <li>Express</li>
+    <li>PostgreSQL</li>
+    <li>Knex</li>
+    <li>JWT</li>
+    <li>Bcrypt</li>
+    <li>Yup</li>
+    <li>Swagger</li>
 </ul>
 
-<p>Cadastro - <b>/usuario/cadastro - POST</b></p>
-<ul>
-    <li>Usada para cadastrar usuário</li>
-    <li>Deve ser enviado no body: nome, email, senha e as trilhas</li>
-    <li>nome: string (obrigatório)</li>
-    <li>email: string (obrigatório)</li>
-    <li>senha: string e deve ter no mínimo 8 dígitos (obrigatório)</li>
-    <li>trilhas: array de id das trilhas (obrigatório)</li>
-</ul>
+<h2>Como rodar a API?</h2>
 
-<p>Login - <b>/usuario/login - POST</b></p>
-<ul>
-    <li>Usada para o usuário fazer login</li>
-    <li>Deve ser enviado no body: email, senha</li>
-    <li>email: string (obrigatório)</li>
-    <li>senha: string e deve ter no mínimo 8 dígitos (obrigatório)</li>
-    <li>Será retornado o token de autenticação e os dados do usuário logado</li>
-</ul>
+``` bash
+#Clone este repositório
+$ git clone git@github.com:squad-3-fcamara/back-squad3.git
+#Abra a pasta e no terminal execute o comando:
+$ npm install
+ou
+$ yarn install
+#Em seguida deixe a aplicação “rodando” através do comando abaixo:
+$ npm start
+ou
+$ yarn start
+#A aplicação será aberta na porta:3100 - acesse http://localhost:3100. 
+```
 
-<h3>Endpoints que usuário precisa estar logado:</h3>
+*OBS: Para utilizar a API hospedada acesse por aqui: https://orange-squad03.herokuapp.com/*
 
-<p>Detalhar Usuário e suas Trilhas - <b>/usuario - GET</b></p>
-<ul>
-    <li>Usada para detalhar o usuário e todas as trilhas</li>
-</ul>
-
-<p>Alterar as Trilhas do Usuário - <b>/usuario/trilhas/alterar - POST</b></p>
-<ul>
-    <li>Usada para alterar as trilhas do usuário</li>
-    <li>Deve ser enviado no body: array de id das trilhas (obrigatório)</li>
-</ul>
+<h2>Documentação</h2>
+Para acessar a documentação do Swagger você deve acessar o endereço http://localhost:3100/docs/ com a aplicação "rodando".
