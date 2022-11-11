@@ -104,7 +104,7 @@
                 }
             }
         },
-        "/usuario/trilhas/alterar":{
+        "/usuario/trilhas":{
             "patch":{
                 "summary":"Alterar trilhas do usuário",
                 "description":"Essa rota será responsável por alterar as trilhas que o usuário logado quiser.",
@@ -214,7 +214,7 @@
                 }  
             }
         },
-        "/conteudos/adicionar":{
+        "/conteudos":{
             "post":{
                 "summary": "Cadastro do conteúdo na trilha",
                 "description": "Essa rota será responsável pelo cadastro de conteúdos na trilha.",
@@ -242,7 +242,7 @@
                 }
             }
         },
-        "/conteudos/deletar/{idConteudo}":{
+        "/conteudos/{idConteudo}":{
             "delete":{
                 "summary": "Deletar um conteúdo da trilha",
                 "description":"Essa rota será responsável por deletar o conteúdo com o id passado como paramêtro.",
@@ -297,9 +297,7 @@
                     "description":"Bad Request"
                 }
                 }
-            }
-        },
-        "/conteudo/editar/{idConteudo}":{
+            },
             "patch":{
                 "summary": "Edição do conteúdo na trilha",
                 "description": "Essa rota será responsável pela edição de conteúdos na trilha.",

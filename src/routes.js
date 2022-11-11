@@ -27,14 +27,14 @@ routes.get("/trilhas", listarTrilhas);
 
 routes.use(verificarUsuarioLogado);
 routes.get("/usuario", detalhesUsuario);
-routes.patch("/usuario/trilhas/alterar", alterarTrilhas);
+routes.patch("/usuario/trilhas", alterarTrilhas);
 routes.get("/trilhas/:idTrilha", verificarUsuarioInscrito, detalharTrilha);
 routes.get("/trilhas/:idTrilha/modulos/:idModulo", verificarUsuarioInscrito, detalharModulos);
 routes.get("/trilhas/:idTrilha/aulas/:idAula", verificarUsuarioInscrito, detalharAulas);
 
 routes.use(verificarAdmin);
-routes.post("/conteudos/adicionar", adicionarConteudo);
-routes.delete("/conteudos/deletar/:idConteudo", deletarConteudo);
+routes.post("/conteudos", adicionarConteudo);
+routes.delete("/conteudos/:idConteudo", deletarConteudo);
 routes.get("/conteudo/:idConteudo", detalharConteudo);
-routes.patch("/conteudo/editar/:idConteudo", editarConteudo);
+routes.patch("/conteudo/:idConteudo", editarConteudo);
 module.exports = routes;
