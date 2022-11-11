@@ -35,7 +35,6 @@ const cadastrarUsuario = async (req, res) => {
     for (let trilhaId of trilhas) {
       cadastrarTrilha(trilhaId, registrarUsuario[0].id);
     }
-
     return res
       .status(201)
       .json({ email: registrarUsuario[0].email, isadmin: registrarUsuario[0].isadmin });
