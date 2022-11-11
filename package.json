@@ -18,7 +18,11 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^2.3.0",
     "pg": "^8.8.0",
+    "swagger-ui-express": "^4.6.0",
     "yup": "^0.32.11",
     "yup-locales": "^1.2.10"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

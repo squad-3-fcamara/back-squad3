@@ -27,7 +27,7 @@ const deletarConteudo = async (req, res) => {
       .first();
 
     if (!conteudo) {
-      return res.status(400).json("Conteúdo não encontrado!");
+      return res.status(404).json("Conteúdo não encontrado!");
     }
 
     const delConteudo = await knex("conteudos").del().where("id", idConteudo);
@@ -82,7 +82,7 @@ const editarConteudo = async (req, res) => {
       res.status(400).json("Conteúdo não foi atualizado!");
     }
 
-    res.status(200).json("Conteúdo atualizado com sucesso!");
+    res.status(201).json("Conteúdo atualizado com sucesso!");
   } catch (error) {
     return res.status(500).json(error.message);
   }

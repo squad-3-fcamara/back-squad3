@@ -36,7 +36,9 @@ const cadastrarUsuario = async (req, res) => {
       cadastrarTrilha(trilhaId, registrarUsuario[0].id);
     }
 
-    return res.status(201).json("O usuário foi cadastrado com sucesso!");
+    return res
+      .status(201)
+      .json({ email: registrarUsuario[0].email, isadmin: registrarUsuario[0].isadmin });
   } catch (error) {
     return res.status(500).json(error.message);
   }

@@ -33,11 +33,18 @@ const alterarTrilhas = async (req, res) => {
 };
 
 const detalharTrilha = async (req, res) => {
-  const { id } = req.params;
+  const { idTrilha } = req.params;
 
   try {
-    const trilha = await knex("trilhas").select("*").where("id", id).first();
-    const modulos = await knex("modulos").select("id", "ordem", "nome").where("id_trilha", id);
+    const trilha = await knex("trilhas").select("*").where("id", idTrilha).first();
+
+    if (!trilha) {
+      return res.status(404).json("Não foi encontrado trilha com esse id.");
+    }
+
+    const modulos = await knex("modulos")
+      .select("id", "ordem", "nome")
+      .where("id_trilha", idTrilha);
 
     res.status(200).json({
       trilha,
