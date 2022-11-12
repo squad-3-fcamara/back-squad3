@@ -35,9 +35,14 @@ const cadastrarUsuario = async (req, res) => {
     for (let trilhaId of trilhas) {
       cadastrarTrilha(trilhaId, registrarUsuario[0].id);
     }
+
+    const token = jwt.sign({ id: registrarUsuario[0].id }, segredo, {
+      expiresIn: "8h",
+    });
+
     return res
       .status(201)
-      .json({ email: registrarUsuario[0].email, isadmin: registrarUsuario[0].isadmin });
+      .json({ email: registrarUsuario[0].email, isadmin: registrarUsuario[0].isadmin, token });
   } catch (error) {
     return res.status(500).json(error.message);
   }
