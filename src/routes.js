@@ -29,7 +29,6 @@ routes.use(verificarUsuarioLogado);
 routes.get("/usuario", detalhesUsuario);
 routes.patch("/usuario/trilhas", alterarTrilhas);
 routes.get("/trilhas/:idTrilha", verificarUsuarioInscrito, detalharTrilha);
-routes.get("/trilhas/:idTrilha/modulos/:idModulo", verificarUsuarioInscrito, detalharModulos);
 routes.get("/trilhas/:idTrilha/aulas/:idAula", verificarUsuarioInscrito, detalharAulas);
 
 routes.use(verificarAdmin);

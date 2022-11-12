@@ -148,39 +148,6 @@
                 }  
             }
         },
-        "/trilhas/{idTrilha}/modulos/{idModulo}":{
-            "get":{
-                "summary": "Detalhar módulo da trilha",
-                "description": "Essa rota é para trazer informações do módulo da trilha que foi colocado os ids no parâmetro da requisição",
-                "tags":["Trilha"],
-                "security":[{"bearerAuth":[]}],
-                "parameters":[
-                    {
-                        "in":"path",
-                        "name":"idTrilha",
-                        "description":"Id da trilha que contém o módulo",
-                        "required":true 
-                    },
-                    {
-                        "in":"path",
-                        "name":"idModulo",
-                        "description":"Id do módulo",
-                        "required":true 
-                    }
-                ],
-                "responses":{
-                    "404":{
-                        "description": "Not Found"
-                    },
-                    "200":{
-                        "description": "OK"
-                   },
-                   "500":{
-                        "description": "Internal Server Error"
-                   }
-                }  
-            }
-        },
         "/trilhas/{idTrilha}/aulas/{idAula}":{
             "get":{
                 "summary":"Detalhar aulas do módulo",

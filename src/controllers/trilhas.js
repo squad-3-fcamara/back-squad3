@@ -46,28 +46,18 @@ const detalharTrilha = async (req, res) => {
       .select("id", "ordem", "nome")
       .where("id_trilha", idTrilha);
 
+    for (let i = 0; i < modulos.length; i++) {
+      const aulasDoModulo = await knex("aulas")
+        .select("id", "ordem", "nome")
+        .where("id_modulo", modulos[i].id);
+
+      modulos[i].aulas = aulasDoModulo;
+    }
+
     res.status(200).json({
       trilha,
       modulos,
     });
-  } catch (error) {
-    return res.status(500).json(error.message);
-  }
-};
-
-const detalharModulos = async (req, res) => {
-  const { idModulo } = req.params;
-
-  try {
-    const aulasDoModulo = await knex("aulas")
-      .select("id", "ordem", "nome")
-      .where("id_modulo", idModulo);
-
-    if (aulasDoModulo.length === 0) {
-      return res.status(404).json("Não há aulas nesse módulo");
-    }
-
-    res.status(200).json(aulasDoModulo);
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -102,6 +92,5 @@ module.exports = {
   listarTrilhas,
   alterarTrilhas,
   detalharTrilha,
-  detalharModulos,
   detalharAulas,
 };
