@@ -72,7 +72,8 @@ const detalharAulas = async (req, res) => {
 
     const conteudosDaAula = await knex("conteudos")
       .select("id", "ordem", "nome", "tipo", "autor", "descricao", "link")
-      .where("id_aula", idAula);
+      .where("id_aula", idAula)
+      .orderBy("ordem", "asc");
 
     if (conteudosDaAula.length === 0) {
       return res.status(404).json("Não há contéudos nessa aula");
