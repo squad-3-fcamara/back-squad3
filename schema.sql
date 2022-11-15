@@ -61,6 +61,9 @@ INSERT INTO modulos (id_trilha, ordem, nome) VALUES (2,5,'Ferramentas de UI');
 INSERT INTO modulos (id_trilha, ordem, nome) VALUES (2,6,'Entregar');
 INSERT INTO modulos (id_trilha, ordem, nome) VALUES (2,7,'Soft Skills');
 
+INSERT INTO modulos (id_trilha, ordem, nome) VALUES (1,1,'Introdução ao Full Stack');
+INSERT INTO modulos (id_trilha, ordem, nome) VALUES (3,1,'Introdução ao Quality Assurance');
+
 INSERT INTO aulas (id_modulo, ordem, nome) VALUES (1, 1, 'O que é User Experience');
 INSERT INTO aulas (id_modulo, ordem, nome) VALUES (1, 2, 'Duplo Diamante');
 INSERT INTO aulas (id_modulo, ordem, nome) VALUES (1, 3, 'Os grandes UX');
@@ -102,6 +105,9 @@ INSERT INTO aulas (id_modulo, ordem, nome) VALUES (7, 3, 'Inteligência emociona
 INSERT INTO aulas (id_modulo, ordem, nome) VALUES (7, 4, 'Gestão do tempo');
 INSERT INTO aulas (id_modulo, ordem, nome) VALUES (7, 5, 'Protagonista da própria história');
 
+INSERT INTO aulas (id_modulo, ordem, nome) VALUES (8, 1, 'Lógica de Programação');
+INSERT INTO aulas (id_modulo, ordem, nome) VALUES (9, 1, 'Qualidade de Software');
+
 INSERT INTO conteudos (id_aula, ordem, tipo, autor, descricao, link) VALUES (1,1, 'vídeo', 'OrangeJuice','Em algum lugar além do arco-íris, o UX Design foi criado para ajudar a entendermos o usuário e melhorar sua experiência, seja ela com um produto, marca ou sistema. Nosso time UX Rainbow, formado por Carla Mendanha, Melody Bruni, Diego Tavares, Karem Carvalho, Carlos Gizbert e Luis Henrique Souto, irão bater um papo para falar sobre a área de UX/UI Design e como trabalham dentro da FCamara.','https://www.youtube.com/watch?v=_RsYz_iKP4k');
 INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (1,2,'Mas o que é UX?','artigo','OrangeJuice', 'O UX é um termo relativamente jovem, usado pela primeira vez por Donald Norma em 1996 quando trabalhava na Apple. No Brasil, esse termo começa a ser usado só em 2010 e ganha muita força na pandemia do Corona vírus de 2020. Mas o que seria exatamente UX?', 'https://medium.com/orangejuicefc/mas-o-que-%C3%A9-ux-330edd9c6887');
 INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (1,3,'O que é UX e UI', 'artigo', 'Alura','UX e UI: conheça as semelhanças e diferenças entre ambos. Boa parte dos designers mais experientes ainda confunde esses dois conceitos. Entenda a diferença.','https://www.alura.com.br/artigos/ux-e-ui-conheca-as-semelhancas-e-diferencas-entre-ambos');
@@ -113,3 +119,7 @@ INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUE
 INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (2,3,'Conhecendo Design Thinking na prática', 'artigo', 'OrangeJuice','Aborda Design Thinking com uma visão muito prática dentro de um Estudo de Caso real.','https://medium.com/orangejuicefc/vacinar-conhecendo-design-thinking-na-pr%C3%A1tica-87656e0f6e5e');
 INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (2,4, 'O Entenda, de fato, o que é o design thinking?', 'apostila','Alura','Existe uma prática chamada Design Thinking que, assim como diz o nome, nos faz "desenhar o pensamento", alinhando as condições reais de algum contexto, que ajudam a compreender melhor as ações e resultados esperados.','https://www.alura.com.br/apostila-ux-usabilidade-mobile-web/experiencia');
 INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (2,5,'Design Thinking - Uma Metodologia Poderosa Para Decretar o Fim Das Velhas Ideiast', 'livro', 'Tim Brown','“Tim Brown escreveu o livro definitivo sobre design thinking. A sagacidade e a experiência de Brown e as histórias que ele conta fazem deste livro uma prazerosa jornada. Esta obra-prima apresenta as emoções, a mentalidade e os métodos necessários para elaborar o design de tudo, de um produto a uma experiência ou estratégia, de modo inovador.”','https://m.media-amazon.com/images/I/51nfdjLJVgL._SY344_BO1,204,203,200_QL70_ML2_.jpg');
+
+INSERT INTO conteudos (id_aula, ordem, tipo, autor, descricao, link) VALUES (35, 1, 'video', 'Curso em Video','Lógica de Programação é uma sequência de passos que devem ser seguidas para atingir um resultado final', 'https://www.youtube.com/watch?v=8mei6uVttho');
+INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (36, 1, 'Qualidade de Software','artigo', 'DEVMEDIA', 'O conceito da qualidade tem hoje importância fundamental para alavancar a competitividade das empresas. Atualmente, a preocupação com a qualidade deixou de ser um diferencial competitivo e passou a ser um pré-requisito básico para participação no mercado. No setor de software não é diferente.', 'https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209');
+INSERT INTO conteudos (id_aula, ordem, nome, tipo, autor, descricao, link) VALUES (36, 2,'O que faz uma pessoa QA?', 'artigo', 'Caroli.org', 'O QA deve, acima de tudo, garantir a qualidade; ou seja, a necessidade em qualquer projeto de garantir que o software que estamos entregando ao cliente é exatamente o que eles querem. Entretanto, os Analistas de Qualidade são os pensadores que se especializam e se apropriam da qualidade do projeto. Isso é um desafio porque todos em uma equipe são responsáveis ​​pela qualidade e, dependendo da composição da equipe, diferentes aspectos de qualidade podem ser tratadas por pessoas diferentes.', 'https://caroli.org/o-que-faz-um-qa/');
