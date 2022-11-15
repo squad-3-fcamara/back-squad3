@@ -34,8 +34,6 @@ $ yarn start
 
 *OBS: Para utilizar a API hospedada acesse por aqui: https://orange-squad03.herokuapp.com/*
 
-*OBS2: Na Heroku já temos uma conta admin criada:*
-
 <h2>Documentação</h2>
 Para acessar a documentação do Swagger você deve acessar o endereço http://localhost:3100/docs/ com a aplicação "rodando" ou https://orange-squad03.herokuapp.com/docs/.
 
